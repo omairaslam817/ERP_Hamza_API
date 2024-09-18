@@ -1,0 +1,699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ERP_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssignedJobDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormNo" Type="int" />
+          <Property Name="Company" Type="varchar(max)" />
+          <Property Name="Measure" Type="varchar(max)" />
+          <Property Name="Inspection" Type="varchar(max)" />
+          <Property Name="Month" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormOrId" Type="int" />
+          <Property Name="ActionBy" Type="varchar(max)" />
+          <Property Name="ADate" Type="datetime" />
+          <Property Name="Action" Type="varchar(max)" />
+          <Property Name="Type" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CheckListData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormId" Type="int" />
+          <Property Name="CheckListId" Type="int" />
+          <Property Name="CStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="CheckListNameList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CheckList" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="FormStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormId" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="FunderQuery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormNo" Type="int" />
+          <Property Name="FunderName" Type="varchar" MaxLength="50" />
+          <Property Name="FunderText" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="10" />
+          <Property Name="MemberType" Type="varchar" MaxLength="50" />
+          <Property Name="Member" Type="varchar" MaxLength="50" />
+          <Property Name="MTime" Type="varchar" MaxLength="50" />
+          <Property Name="MDate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="JobForm1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefNo" Type="varchar(max)" />
+          <Property Name="LeadGenerator" Type="varchar(max)" />
+          <Property Name="Scheme" Type="varchar(max)" />
+          <Property Name="Surname" Type="varchar(max)" />
+          <Property Name="Forename" Type="varchar(max)" />
+          <Property Name="DOB" Type="varchar(max)" />
+          <Property Name="PropertyNo" Type="varchar(max)" />
+          <Property Name="AddressLine1" Type="varchar(max)" />
+          <Property Name="Town" Type="varchar(max)" />
+          <Property Name="Postcode" Type="varchar(max)" />
+          <Property Name="SurveyName" Type="varchar(max)" />
+          <Property Name="SurveyDate" Type="varchar(max)" />
+          <Property Name="SurveyTime" Type="varchar(max)" />
+          <Property Name="Tenure" Type="varchar(max)" />
+          <Property Name="Status" Type="int" />
+          <Property Name="CreateBy" Type="varchar(max)" />
+          <Property Name="CDate" Type="datetime" />
+          <Property Name="PassInstaName" Type="varchar(max)" />
+          <Property Name="PassInstaDate" Type="datetime" />
+          <Property Name="PassInstaTime" Type="varchar(max)" />
+          <Property Name="LoftName" Type="varchar(max)" />
+          <Property Name="LoftDate" Type="datetime" />
+          <Property Name="LoftTime" Type="varchar(max)" />
+          <Property Name="RIRName" Type="varchar(max)" />
+          <Property Name="RIRDate" Type="datetime" />
+          <Property Name="RIRTime" Type="varchar(max)" />
+          <Property Name="EWIName" Type="varchar(max)" />
+          <Property Name="EWIDate" Type="datetime" />
+          <Property Name="EWITime" Type="varchar(max)" />
+          <Property Name="IWIName" Type="varchar(max)" />
+          <Property Name="IWIDate" Type="datetime" />
+          <Property Name="IWITime" Type="varchar(max)" />
+          <Property Name="BoilerName" Type="varchar(max)" />
+          <Property Name="BoilerDate" Type="datetime" />
+          <Property Name="BoilerTime" Type="varchar(max)" />
+          <Property Name="HCName" Type="varchar(max)" />
+          <Property Name="HCDate" Type="datetime" />
+          <Property Name="HCTime" Type="varchar(max)" />
+          <Property Name="SolarName" Type="varchar(max)" />
+          <Property Name="SolarDate" Type="datetime" />
+          <Property Name="SolarTime" Type="varchar(max)" />
+          <Property Name="AshipName" Type="varchar(max)" />
+          <Property Name="AshipDate" Type="datetime" />
+          <Property Name="AshipTime" Type="varchar(max)" />
+          <Property Name="FunderName" Type="varchar(max)" />
+          <Property Name="FunderDate" Type="datetime" />
+          <Property Name="FunderQText" Type="varchar(max)" />
+          <Property Name="FunderTime" Type="varchar(max)" />
+          <Property Name="FunderName2" Type="varchar(max)" />
+          <Property Name="IpadQAccessorName" Type="varchar(max)" />
+          <Property Name="IpadQAccessorNameRcInst" Type="varchar(max)" />
+          <Property Name="EprReportText" Type="varchar(max)" />
+          <Property Name="EprJobContrbText" Type="varchar(max)" />
+          <Property Name="RcInstructSideNote" Type="varchar(max)" />
+          <Property Name="RcInstructSideDate" Type="varchar(max)" />
+          <Property Name="JobNote" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="ContactNo" Type="varchar(max)" />
+          <Property Name="ChkL1" Type="bit" />
+          <Property Name="ChkL2" Type="bit" />
+          <Property Name="ChkL3" Type="bit" />
+          <Property Name="ChkL4" Type="bit" />
+          <Property Name="ChkL5" Type="bit" />
+          <Property Name="ChkL6" Type="bit" />
+          <Property Name="ChkL7" Type="bit" />
+          <Property Name="ChkL8" Type="bit" />
+          <Property Name="IsGDGC" Type="bit" />
+          <Property Name="isPostStateReq" Type="bit" />
+          <Property Name="isLogemnt" Type="bit" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Member" Type="varchar(max)" />
+          <Property Name="Name" Type="varchar(max)" />
+          <Property Name="Contact" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="NINumber" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageId" Type="int" />
+          <Property Name="PageName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="PagesPermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="PageId" Type="int" />
+        </EntityType>
+        <EntityType Name="PostStateReqData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormId" Type="int" />
+          <Property Name="Measure" Type="varchar" MaxLength="255" />
+          <Property Name="StartDate" Type="varchar" MaxLength="255" />
+          <Property Name="EndDate" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TMQueries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormNo" Type="int" />
+          <Property Name="TextA" Type="varchar" MaxLength="500" />
+          <Property Name="TextB" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TrackRCInstState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormNo" Type="int" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="IsBooked" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="ERP_DBModelStoreContainer">
+          <EntitySet Name="AssignedJobDetails" EntityType="Self.AssignedJobDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckListData" EntityType="Self.CheckListData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckListNameList" EntityType="Self.CheckListNameList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormStatus" EntityType="Self.FormStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FunderQuery" EntityType="Self.FunderQuery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobForm1" EntityType="Self.JobForm1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PagesPermission" EntityType="Self.PagesPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostStateReqData" EntityType="Self.PostStateReqData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TMQueries" EntityType="Self.TMQueries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackRCInstState" EntityType="Self.TrackRCInstState" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ERP_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ERP_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Audits" EntityType="ERP_DBModel.Audit" />
+          <EntitySet Name="FormStatus" EntityType="ERP_DBModel.FormStatu" />
+          <EntitySet Name="Members" EntityType="ERP_DBModel.Member" />
+          <EntitySet Name="FunderQueries" EntityType="ERP_DBModel.FunderQuery" />
+          <EntitySet Name="CheckListDatas" EntityType="ERP_DBModel.CheckListData" />
+          <EntitySet Name="CheckListNameLists" EntityType="ERP_DBModel.CheckListNameList" />
+          <EntitySet Name="Pages" EntityType="ERP_DBModel.Page" />
+          <EntitySet Name="PagesPermissions" EntityType="ERP_DBModel.PagesPermission" />
+          <EntitySet Name="TrackRCInstStates" EntityType="ERP_DBModel.TrackRCInstState" />
+          <EntitySet Name="PostStateReqDatas" EntityType="ERP_DBModel.PostStateReqData" />
+          <EntitySet Name="TMQueries" EntityType="ERP_DBModel.TMQuery" />
+          <EntitySet Name="JobForm1" EntityType="ERP_DBModel.JobForm1" />
+          <EntitySet Name="AssignedJobDetails" EntityType="ERP_DBModel.AssignedJobDetail" />
+          <EntitySet Name="Logins" EntityType="ERP_DBModel.Login" />
+        </EntityContainer>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormOrId" Type="Int32" />
+          <Property Name="ActionBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ADate" Type="DateTime" Precision="3" />
+          <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FormStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Member1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NINumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FunderQuery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormNo" Type="Int32" />
+          <Property Name="FunderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FunderText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MemberType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Member" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CheckListData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormId" Type="Int32" />
+          <Property Name="CheckListId" Type="Int32" />
+          <Property Name="CStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CheckListNameList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CheckList" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageId" Type="Int32" />
+          <Property Name="PageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PagesPermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="PageId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TrackRCInstState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormNo" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsBooked" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PostStateReqData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormId" Type="Int32" />
+          <Property Name="Measure" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EndDate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TMQuery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormNo" Type="Int32" />
+          <Property Name="TextA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TextB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="JobForm1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LeadGenerator" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Scheme" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Forename" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PropertyNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Postcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SurveyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SurveyDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SurveyTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tenure" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreateBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CDate" Type="DateTime" Precision="3" />
+          <Property Name="PassInstaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PassInstaDate" Type="DateTime" Precision="3" />
+          <Property Name="PassInstaTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LoftName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LoftDate" Type="DateTime" Precision="3" />
+          <Property Name="LoftTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RIRName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RIRDate" Type="DateTime" Precision="3" />
+          <Property Name="RIRTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EWIName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EWIDate" Type="DateTime" Precision="3" />
+          <Property Name="EWITime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IWIName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IWIDate" Type="DateTime" Precision="3" />
+          <Property Name="IWITime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BoilerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BoilerDate" Type="DateTime" Precision="3" />
+          <Property Name="BoilerTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HCName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HCDate" Type="DateTime" Precision="3" />
+          <Property Name="HCTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SolarName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SolarDate" Type="DateTime" Precision="3" />
+          <Property Name="SolarTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AshipName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AshipDate" Type="DateTime" Precision="3" />
+          <Property Name="AshipTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FunderName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FunderDate" Type="DateTime" Precision="3" />
+          <Property Name="FunderQText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FunderTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FunderName2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IpadQAccessorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IpadQAccessorNameRcInst" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EprReportText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EprJobContrbText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RcInstructSideNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RcInstructSideDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JobNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChkL1" Type="Boolean" />
+          <Property Name="ChkL2" Type="Boolean" />
+          <Property Name="ChkL3" Type="Boolean" />
+          <Property Name="ChkL4" Type="Boolean" />
+          <Property Name="ChkL5" Type="Boolean" />
+          <Property Name="ChkL6" Type="Boolean" />
+          <Property Name="ChkL7" Type="Boolean" />
+          <Property Name="ChkL8" Type="Boolean" />
+          <Property Name="IsGDGC" Type="Boolean" />
+          <Property Name="isPostStateReq" Type="Boolean" />
+          <Property Name="isLogemnt" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="AssignedJobDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormNo" Type="Int32" />
+          <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Measure" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Inspection" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Month" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ERP_DBModelStoreContainer" CdmEntityContainer="ERP_DBEntities">
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="ERP_DBModel.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="ADate" ColumnName="ADate" />
+                <ScalarProperty Name="ActionBy" ColumnName="ActionBy" />
+                <ScalarProperty Name="FormOrId" ColumnName="FormOrId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormStatus">
+            <EntityTypeMapping TypeName="ERP_DBModel.FormStatu">
+              <MappingFragment StoreEntitySet="FormStatus">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="ERP_DBModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="NINumber" ColumnName="NINumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Member1" ColumnName="Member" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FunderQueries">
+            <EntityTypeMapping TypeName="ERP_DBModel.FunderQuery">
+              <MappingFragment StoreEntitySet="FunderQuery">
+                <ScalarProperty Name="MDate" ColumnName="MDate" />
+                <ScalarProperty Name="MTime" ColumnName="MTime" />
+                <ScalarProperty Name="Member" ColumnName="Member" />
+                <ScalarProperty Name="MemberType" ColumnName="MemberType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FunderText" ColumnName="FunderText" />
+                <ScalarProperty Name="FunderName" ColumnName="FunderName" />
+                <ScalarProperty Name="FormNo" ColumnName="FormNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckListDatas">
+            <EntityTypeMapping TypeName="ERP_DBModel.CheckListData">
+              <MappingFragment StoreEntitySet="CheckListData">
+                <ScalarProperty Name="CStatus" ColumnName="CStatus" />
+                <ScalarProperty Name="CheckListId" ColumnName="CheckListId" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CheckListNameLists">
+            <EntityTypeMapping TypeName="ERP_DBModel.CheckListNameList">
+              <MappingFragment StoreEntitySet="CheckListNameList">
+                <ScalarProperty Name="CheckList" ColumnName="CheckList" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="ERP_DBModel.Page">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagesPermissions">
+            <EntityTypeMapping TypeName="ERP_DBModel.PagesPermission">
+              <MappingFragment StoreEntitySet="PagesPermission">
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackRCInstStates">
+            <EntityTypeMapping TypeName="ERP_DBModel.TrackRCInstState">
+              <MappingFragment StoreEntitySet="TrackRCInstState">
+                <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="FormNo" ColumnName="FormNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostStateReqDatas">
+            <EntityTypeMapping TypeName="ERP_DBModel.PostStateReqData">
+              <MappingFragment StoreEntitySet="PostStateReqData">
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Measure" ColumnName="Measure" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TMQueries">
+            <EntityTypeMapping TypeName="ERP_DBModel.TMQuery">
+              <MappingFragment StoreEntitySet="TMQueries">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TextB" ColumnName="TextB" />
+                <ScalarProperty Name="TextA" ColumnName="TextA" />
+                <ScalarProperty Name="FormNo" ColumnName="FormNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobForm1">
+            <EntityTypeMapping TypeName="ERP_DBModel.JobForm1">
+              <MappingFragment StoreEntitySet="JobForm1">
+                <ScalarProperty Name="isLogemnt" ColumnName="isLogemnt" />
+                <ScalarProperty Name="isPostStateReq" ColumnName="isPostStateReq" />
+                <ScalarProperty Name="IsGDGC" ColumnName="IsGDGC" />
+                <ScalarProperty Name="ChkL8" ColumnName="ChkL8" />
+                <ScalarProperty Name="ChkL7" ColumnName="ChkL7" />
+                <ScalarProperty Name="ChkL6" ColumnName="ChkL6" />
+                <ScalarProperty Name="ChkL5" ColumnName="ChkL5" />
+                <ScalarProperty Name="ChkL4" ColumnName="ChkL4" />
+                <ScalarProperty Name="ChkL3" ColumnName="ChkL3" />
+                <ScalarProperty Name="ChkL2" ColumnName="ChkL2" />
+                <ScalarProperty Name="ChkL1" ColumnName="ChkL1" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="JobNote" ColumnName="JobNote" />
+                <ScalarProperty Name="RcInstructSideDate" ColumnName="RcInstructSideDate" />
+                <ScalarProperty Name="RcInstructSideNote" ColumnName="RcInstructSideNote" />
+                <ScalarProperty Name="EprJobContrbText" ColumnName="EprJobContrbText" />
+                <ScalarProperty Name="EprReportText" ColumnName="EprReportText" />
+                <ScalarProperty Name="IpadQAccessorNameRcInst" ColumnName="IpadQAccessorNameRcInst" />
+                <ScalarProperty Name="IpadQAccessorName" ColumnName="IpadQAccessorName" />
+                <ScalarProperty Name="FunderName2" ColumnName="FunderName2" />
+                <ScalarProperty Name="FunderTime" ColumnName="FunderTime" />
+                <ScalarProperty Name="FunderQText" ColumnName="FunderQText" />
+                <ScalarProperty Name="FunderDate" ColumnName="FunderDate" />
+                <ScalarProperty Name="FunderName" ColumnName="FunderName" />
+                <ScalarProperty Name="AshipTime" ColumnName="AshipTime" />
+                <ScalarProperty Name="AshipDate" ColumnName="AshipDate" />
+                <ScalarProperty Name="AshipName" ColumnName="AshipName" />
+                <ScalarProperty Name="SolarTime" ColumnName="SolarTime" />
+                <ScalarProperty Name="SolarDate" ColumnName="SolarDate" />
+                <ScalarProperty Name="SolarName" ColumnName="SolarName" />
+                <ScalarProperty Name="HCTime" ColumnName="HCTime" />
+                <ScalarProperty Name="HCDate" ColumnName="HCDate" />
+                <ScalarProperty Name="HCName" ColumnName="HCName" />
+                <ScalarProperty Name="BoilerTime" ColumnName="BoilerTime" />
+                <ScalarProperty Name="BoilerDate" ColumnName="BoilerDate" />
+                <ScalarProperty Name="BoilerName" ColumnName="BoilerName" />
+                <ScalarProperty Name="IWITime" ColumnName="IWITime" />
+                <ScalarProperty Name="IWIDate" ColumnName="IWIDate" />
+                <ScalarProperty Name="IWIName" ColumnName="IWIName" />
+                <ScalarProperty Name="EWITime" ColumnName="EWITime" />
+                <ScalarProperty Name="EWIDate" ColumnName="EWIDate" />
+                <ScalarProperty Name="EWIName" ColumnName="EWIName" />
+                <ScalarProperty Name="RIRTime" ColumnName="RIRTime" />
+                <ScalarProperty Name="RIRDate" ColumnName="RIRDate" />
+                <ScalarProperty Name="RIRName" ColumnName="RIRName" />
+                <ScalarProperty Name="LoftTime" ColumnName="LoftTime" />
+                <ScalarProperty Name="LoftDate" ColumnName="LoftDate" />
+                <ScalarProperty Name="LoftName" ColumnName="LoftName" />
+                <ScalarProperty Name="PassInstaTime" ColumnName="PassInstaTime" />
+                <ScalarProperty Name="PassInstaDate" ColumnName="PassInstaDate" />
+                <ScalarProperty Name="PassInstaName" ColumnName="PassInstaName" />
+                <ScalarProperty Name="CDate" ColumnName="CDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Tenure" ColumnName="Tenure" />
+                <ScalarProperty Name="SurveyTime" ColumnName="SurveyTime" />
+                <ScalarProperty Name="SurveyDate" ColumnName="SurveyDate" />
+                <ScalarProperty Name="SurveyName" ColumnName="SurveyName" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="PropertyNo" ColumnName="PropertyNo" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Forename" ColumnName="Forename" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+                <ScalarProperty Name="LeadGenerator" ColumnName="LeadGenerator" />
+                <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssignedJobDetails">
+            <EntityTypeMapping TypeName="ERP_DBModel.AssignedJobDetail">
+              <MappingFragment StoreEntitySet="AssignedJobDetails">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Inspection" ColumnName="Inspection" />
+                <ScalarProperty Name="Measure" ColumnName="Measure" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="FormNo" ColumnName="FormNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="ERP_DBModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
