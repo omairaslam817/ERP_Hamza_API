@@ -140,6 +140,7 @@
           <Property Name="IsGDGC" Type="bit" />
           <Property Name="isPostStateReq" Type="bit" />
           <Property Name="isLogemnt" Type="bit" />
+          <Property Name="JobType" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -426,6 +427,7 @@
           <Property Name="IsGDGC" Type="Boolean" />
           <Property Name="isPostStateReq" Type="Boolean" />
           <Property Name="isLogemnt" Type="Boolean" />
+          <Property Name="JobType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AssignedJobDetail">
           <Key>
@@ -576,6 +578,7 @@
           <EntitySetMapping Name="JobForm1">
             <EntityTypeMapping TypeName="ERP_DBModel.JobForm1">
               <MappingFragment StoreEntitySet="JobForm1">
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
                 <ScalarProperty Name="isLogemnt" ColumnName="isLogemnt" />
                 <ScalarProperty Name="isPostStateReq" ColumnName="isPostStateReq" />
                 <ScalarProperty Name="IsGDGC" ColumnName="IsGDGC" />

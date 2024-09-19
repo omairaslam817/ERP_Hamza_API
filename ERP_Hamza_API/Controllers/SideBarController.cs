@@ -255,6 +255,40 @@ namespace ERP_Hamza_API.Controllers
 			}
 
 		}
+		[HttpPost]
+		public HttpResponseMessage AddJobNote(int jobId, string newNoteContent)
+		{
+			try
+			{
+				// Find the job by its ID
+				var jobEntity = db.JobForm1.FirstOrDefault(j => j.Id == jobId);
+				if (jobEntity != null)
+				{
+					// If there's already a note, append the new one with a comma; otherwise, just set it
+					if (!string.IsNullOrEmpty(jobEntity.JobNote))
+					{
+						jobEntity.JobNote += ", " + "Note added on " + DateTime.Now + ": " + newNoteContent;
+					}
+					else
+					{
+						jobEntity.JobNote = "Note added on " + DateTime.Now + ": " + newNoteContent;
+					}
+
+					// Save changes to the database
+					db.SaveChanges();
+
+					return Request.CreateResponse(HttpStatusCode.OK, "Job note added successfully");
+				}
+				else
+				{
+					return Request.CreateResponse(HttpStatusCode.NotFound, $"Job with ID {jobId} not found");
+				}
+			}
+			catch (Exception ex)
+			{
+				return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+			}
+		}
 
 
 

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7f369381c99d47a5acc5324ad6e2dd60" Name="Diagram1" ZoomLevel="48">
+      <Diagram DiagramId="7f369381c99d47a5acc5324ad6e2dd60" Name="Diagram1" ZoomLevel="81">
         <EntityTypeShape EntityType="ERP_DBModel.Audit" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="ERP_DBModel.FormStatu" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="ERP_DBModel.Member" Width="1.5" PointX="5.375" PointY="3.75" />
