@@ -15,6 +15,7 @@ using Antlr.Runtime.Misc;
 
 using Microsoft.SqlServer.Server;
 using Newtonsoft.Json;
+using Microsoft.Ajax.Utilities;
 
 namespace ERP_Hamza_API.Controllers
 {
@@ -985,6 +986,36 @@ namespace ERP_Hamza_API.Controllers
             }
         }
 
+        [HttpPost]
+        public HttpResponseMessage UpdateFullPaid50([FromBody] JobForm1 data) // change 8 to 17
+        {
+            try
+            {
+
+                var jobToUpdate = db.JobForm1.FirstOrDefault(j => j.Id == data.Id);
+
+                if (jobToUpdate == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, "Job not found");
+                }
+
+                jobToUpdate.Status = 50;
+                var Entry = new FormStatu
+                {
+                    FormId = jobToUpdate.Id,
+                    Status = 50
+
+                };
+                db.FormStatus.Add(Entry);
+                db.SaveChanges();
+
+                return Request.CreateResponse(HttpStatusCode.OK, "Job update successfully");
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
         [HttpPost]
         public HttpResponseMessage UpdateJobTo24([FromBody] JobForm1 data) // change 8 to 17
         {
@@ -2272,42 +2303,57 @@ namespace ERP_Hamza_API.Controllers
         }
 
         [HttpGet]
-        public HttpResponseMessage Form1BySat23()//get form1 by status 6
+        public HttpResponseMessage Form1BySat23()
         {
             try
             {
-
                 using (var context = new ERP_DBEntities())
                 {
+                    // Disable lazy loading
+                    context.Configuration.LazyLoadingEnabled = false;
+
                     var records = context.FormStatus
                         .Where(fs => fs.Status == 23)
                         .Join(
                             context.JobForm1,
                             fs => fs.FormId,
                             jf => jf.Id,
-                            (fs, jf) => new
+                            (fs, jf) => new FormModel
                             {
-                                fs.Id,
-                                fs.FormId,
-                                fs.Status,
-                                JobFormRecord = jf
+                                Id = jf.Id,
+                                FormId = jf.Id, // Assuming FormId is the same as Id
+                                Status = jf.Status,
+                                JobFormRecord = new JobFormRecord
+                                {
+                                    Id = jf.Id,
+                                    RefNo = jf.RefNo,
+                                    AddressLine1 = jf.AddressLine1,
+                                    SurveyName = jf.SurveyName,
+                                    Status = jf.Status,
+                                    isLogemnt = jf.isLogemnt,
+                                    JobFormNotes = context.JobForm1Notes
+                                        .Where(note => note.JobFormId == jf.Id)
+                                        .Select(note => new JobForm1Note
+                                        {
+                                            Id = note.Id,
+                                            Note = note.Note,
+                                            CreatedBy = note.CreatedBy,
+                                            CDate = note.CDate,
+                                            JobFormId = note.JobFormId
+                                        }).ToList()
+                                }
                             })
                         .ToList();
 
-
                     return Request.CreateResponse(HttpStatusCode.OK, records);
                 }
-
-
-
             }
             catch (Exception ex)
             {
-
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
-
         }
+
 
         [HttpGet]
         public HttpResponseMessage Form1BySat24()//get form1 by status 6
@@ -3006,20 +3052,16 @@ namespace ERP_Hamza_API.Controllers
 
                 using (var context = new ERP_DBEntities())
                 {
-                    var records = context.FormStatus
-                        .Where(fs => fs.Status == 50)
-                        .Join(
-                            context.JobForm1,
-                            fs => fs.FormId,
-                            jf => jf.Id,
-                            (fs, jf) => new
-                            {
-                                fs.Id,
-                                fs.FormId,
-                                fs.Status,
-                                JobFormRecord = jf
-                            })
-                        .ToList();
+                                var records = context.JobForm1
+                   .Where(jf => jf.Status == 50)
+                   .Select(jf => new
+                   {
+                       Id = jf.Id,
+                       FormId = jf.Id,
+                       Status = jf.Status,
+                       JobFormRecord = jf
+                   })
+                    .ToList();
 
 
                     return Request.CreateResponse(HttpStatusCode.OK, records);
@@ -3620,4 +3662,41 @@ namespace ERP_Hamza_API.Controllers
 
 
     }
+    public class JobFormRecord
+    {
+        public int Id { get; set; }
+        public string RefNo { get; set; }
+
+        public string AddressLine1 { get; set; }
+
+        public string SurveyName { get; set; }
+
+        public int? Status { get; set; }
+        public Nullable<bool> isLogemnt { get; set; }
+        public List<JobForm1Note> JobFormNotes { get; set; }
+
+    }
+    public class JobForm1Note
+    {
+
+        public int Id { get; set; }
+
+        public string Note { get; set; }
+
+        public string CreatedBy { get; set; }
+
+        public Nullable<System.DateTime> CDate { get; set; }
+
+        public Nullable<int> JobFormId { get; set; }
+
+    }
+    public class FormModel
+    {
+        public int Id { get; set; }
+        public int FormId { get; set; }
+        public int? Status { get; set; }
+        public JobFormRecord JobFormRecord { get; set; }
+    }
+
+
 }

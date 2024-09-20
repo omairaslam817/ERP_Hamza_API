@@ -60,6 +60,8 @@ public partial class ERP_DBEntities : DbContext
 
     public virtual DbSet<Login> Logins { get; set; }
 
+    public virtual DbSet<JobForm1Notes> JobForm1Notes { get; set; }
+
 }
 
 }
