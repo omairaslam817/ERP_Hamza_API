@@ -2331,6 +2331,9 @@ namespace ERP_Hamza_API.Controllers
                                     SurveyName = jf.SurveyName,
                                     Status = jf.Status,
                                     isLogemnt = jf.isLogemnt,
+                                    Postcode = jf.Postcode,
+                                    PropertyNo = jf.PropertyNo,
+                                    Town = jf.Town,
                                     JobFormNotes = context.JobForm1Notes
                                         .Where(note => note.JobFormId == jf.Id)
                                         .Select(note => new JobForm1Note
@@ -3672,6 +3675,9 @@ namespace ERP_Hamza_API.Controllers
         public string SurveyName { get; set; }
 
         public int? Status { get; set; }
+        public string PropertyNo { get; set; }
+        public string Town { get; set; }
+        public string Postcode { get; set; }
         public Nullable<bool> isLogemnt { get; set; }
         public List<JobForm1Note> JobFormNotes { get; set; }
 

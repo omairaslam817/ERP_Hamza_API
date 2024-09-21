@@ -206,6 +206,7 @@ namespace ERP_Hamza_API.Controllers
                 var postStageDatesRecords = db.PostStateReqDatas.Where(fs=>fs.FormId==obj.Id).ToList();
                 var funderQueryRecords = db.FunderQueries.Where(fs=>fs.FormNo==obj.Id).ToList();
                 var tmQueryRecords = db.TMQueries.Where(fs=>fs.FormNo==obj.Id).ToList();
+                var jobForm1Notes= db.JobForm1Notes.Where(fs=>fs.JobFormId==obj.Id).ToList();
 
 				var result = new
 				{
@@ -214,8 +215,9 @@ namespace ERP_Hamza_API.Controllers
 					FromStatusRecords = fromStatusRecords,
                     PostStageDatesRecords= postStageDatesRecords,
 					FunderQueryRecords= funderQueryRecords,
-                    TMQueryRecords= tmQueryRecords
-				};
+                    TMQueryRecords= tmQueryRecords,
+                    JobForm1Notes = jobForm1Notes
+                };
 
 				return Request.CreateResponse(HttpStatusCode.OK, result);
 
